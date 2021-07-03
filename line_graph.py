@@ -10,7 +10,7 @@ def create_line_graph(x_vals, y_vals, x_start, x_end):
         x_range = (x_start, x_end),
         y_range = (min(y_vals)-1, max(y_vals)+1),
         #x_length = self.camera.frame_width - 2 * x_padding,
-        #x_length = 12,
+        x_length = 8,
         #y_length = self.camera.frame_height - 2 * y_padding,
         #y_length = 3,
         axis_config={"include_numbers": True},
