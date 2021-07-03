@@ -77,7 +77,7 @@ class LineGraphExample(Scene):
             for line in measure.lines:
                 for moment in line.moments:
                     if len(moment.notes.notes) != 0:
-                       points.append((moment.time, list(moment.notes.notes)[0]))
+                       points.append((moment.time, list(moment.notes.notes)[0].note))
 
         x_vals, y_vals = zip(*points)
         print([float(x) for x in x_vals], [float(y) for y in y_vals])
