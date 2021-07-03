@@ -23,7 +23,7 @@ def create_line_graph(x_vals, y_vals, x_start, x_end):
         vertex_dot_style=dict(stroke_width=3,  fill_color=PURPLE),
         stroke_width = 4,
     )
-    return VGroup(plane, line_graph)
+    return VGroup(line_graph, plane)
 
 class LineGraphExample(Scene):
     def construct(self):
