@@ -6,7 +6,7 @@ from fractions import Fraction
 def create_line_graph(self, x_vals, y_vals):
     x_padding = 1
     y_padding = 1
-    print((min(y_vals)-1, max(y_vals)+1))
+    #print((min(y_vals)-1, max(y_vals)+1))
     plane = NumberPlane(
         x_range = (0, max(x_vals)),
         y_range = (min(y_vals)-1, max(y_vals)+1),
@@ -80,14 +80,14 @@ class LineGraphExample(Scene):
                        points.append((moment.time, list(moment.notes.notes)[0].note))
 
         x_vals, y_vals = zip(*points)
-        print([float(x) for x in x_vals], [float(y) for y in y_vals])
+        #print([float(x) for x in x_vals], [float(y) for y in y_vals])
 
         #x_vals = [0, 1.5, 2, 2.8, 4, 6.25, 8.5, 10, 11, 13]
         #y_vals = [1, 3, 2.25, 4, 2.5, 1.75, 3, 4, 7, -1, 0]
         ##all_graphs = VGroup(*[create_line_graph(self, x_vals, y_vals) for i in range(6)])
         all_graphs = VGroup(*[create_line_graph(self, x_vals, y_vals) for _ in range(6)])
         #all_graphs.arrange(DOWN, buff=0.5)
-        print(all_graphs.height)
+        #print(all_graphs.height)
         #config.frame_height = all_graphs.height 
         #config.frame_size = (1080, all_graphs.height * Pixels)
         self.add(all_graphs)
