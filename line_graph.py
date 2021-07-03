@@ -21,9 +21,9 @@ def create_line_graph(x_vals, y_vals, x_start, x_end):
         y_values = y_vals,
         line_color=GOLD_E,
         vertex_dot_style=dict(stroke_width=3,  fill_color=PURPLE),
-        stroke_width = 4,
+        stroke_width = 5,
     )
-    return VGroup(line_graph, plane)
+    return VGroup(plane, line_graph)
 
 class LineGraphExample(Scene):
     def construct(self):
