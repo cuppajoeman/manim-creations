@@ -98,7 +98,7 @@ class LineGraphExample(Scene):
             measure_count += 1
         #print([float(x) for x in x_vals], [float(y) for y in y_vals])
 
-        if measure_count < 4:
+        if measure_count <= 4:
             points.append(tuple(convert_points_to_x_y_list(point_row)))
 
         graphs = []
