@@ -7,10 +7,12 @@ def create_line_graph(self, x_vals, y_vals):
     x_padding = 1
     #y_padding = 1
     #print((min(y_vals)-1, max(y_vals)+1))
+    print(self.camera.frame_width - 2 * x_padding)
     plane = NumberPlane(
         x_range = (0, max(x_vals)),
         y_range = (min(y_vals)-1, max(y_vals)+1),
-        x_length = self.camera.frame_width - 2 * x_padding,
+        #x_length = self.camera.frame_width - 2 * x_padding,
+        x_length = 12,
         #y_length = self.camera.frame_height - 2 * y_padding,
         y_length = 3,
         axis_config={"include_numbers": True},
@@ -74,20 +76,27 @@ class LineGraphExample(Scene):
         points = []
         measures = converters.parse_music_measures(jens_solo_arps)
         m = numuse.music.Music(measures, 120)
+
+        point_row = []
+        measure_count = 0
         for measure in m.measures:
+            # TODO remove hardcoded 4
+            if measure_count % 4 == 0 and measure_count != 0:
+                x_vals, y_vals = zip(*point_row)
+                points.append((x_vals, y_vals))
+                point_row = []
             for line in measure.lines:
                 for moment in line.moments:
                     if len(moment.notes.notes) != 0:
-                       points.append((moment.time, list(moment.notes.notes)[0].note))
-
-        x_vals, y_vals = zip(*points)
+                       point_row.append((moment.time, list(moment.notes.notes)[0].note))
+            measure_count += 1
         #print([float(x) for x in x_vals], [float(y) for y in y_vals])
 
-        #x_vals = [0, 1.5, 2, 2.8, 4, 6.25, 8.5, 10, 11, 13]
-        #y_vals = [1, 3, 2.25, 4, 2.5, 1.75, 3, 4, 7, -1, 0]
-        ##all_graphs = VGroup(*[create_line_graph(self, x_vals, y_vals) for i in range(6)])
-        graphs = [create_line_graph(self, x_vals, y_vals) for i in range(6)]
-        print(len(graphs))
+        graphs = []
+        for point_row in points:
+            x_vals, y_vals = point_row
+            graphs.append(create_line_graph(self, x_vals, y_vals))
+
         all_graphs = VGroup(*graphs)
         all_graphs.arrange(DOWN, buff=0.5)
         #print(all_graphs.height)
