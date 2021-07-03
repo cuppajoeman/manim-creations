@@ -83,11 +83,12 @@ class LineGraphExample(Scene):
             # TODO remove hardcoded 4
             print(measure_count)
             if measure_count % 4 == 0 and measure_count != 0:
-                print(point_row)
+                print("got in")
                 x_vals, y_vals = zip(*point_row)
                 print(x_vals, y_vals)
                 points.append((x_vals, y_vals))
                 point_row = []
+
             for line in measure.lines:
                 for moment in line.moments:
                     if len(moment.notes.notes) != 0:
