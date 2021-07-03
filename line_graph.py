@@ -88,7 +88,7 @@ class LineGraphExample(Scene):
         graphs = [create_line_graph(self, x_vals, y_vals) for i in range(6)]
         print(len(graphs))
         all_graphs = VGroup(*graphs)
-        #all_graphs.arrange(DOWN, buff=0.5)
+        all_graphs.arrange(DOWN, buff=0.5)
         #print(all_graphs.height)
         #config.frame_height = all_graphs.height 
         #config.frame_size = (1080, all_graphs.height * Pixels)
