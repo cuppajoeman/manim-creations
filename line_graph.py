@@ -4,10 +4,10 @@ import numuse.music
 from fractions import Fraction
 import math
 
-def create_line_graph(x_vals, y_vals, x_start, x_end):
+def create_line_graph(x_vals, y_vals, x_start = 0, x_end = 0):
+    print(math.floor(min(x_vals)), math.ceil(max(x_vals)))
     plane = NumberPlane(
-        #x_range = (math.floor(min(x_vals)), math.ceil(max(x_vals))),
-        x_range = (x_start, x_end),
+        x_range = (math.floor(min(x_vals)), math.ceil(max(x_vals))),
         y_range = (min(y_vals)-1, max(y_vals)+1),
         #x_length = self.camera.frame_width - 2 * x_padding,
         #x_length = 12,
@@ -102,8 +102,7 @@ class LineGraphExample(Scene):
         start_idx = 0
         for point_row in points:
             x_vals, y_vals = point_row
-            graphs.append(create_line_graph(x_vals, y_vals, start_idx, start_idx + 4 * 4))
-            start_idx += 4
+            graphs.append(create_line_graph(x_vals, y_vals))
 
         all_graphs = VGroup(*graphs)
         all_graphs.arrange(DOWN, buff=0.5)
