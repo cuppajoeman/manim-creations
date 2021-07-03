@@ -83,6 +83,7 @@ class LineGraphExample(Scene):
             # TODO remove hardcoded 4
             if measure_count % 4 == 0 and measure_count != 0:
                 x_vals, y_vals = zip(*point_row)
+                print(x_vals, y_vals)
                 points.append((x_vals, y_vals))
                 point_row = []
             for line in measure.lines:
@@ -94,7 +95,6 @@ class LineGraphExample(Scene):
 
         graphs = []
         for point_row in points:
-            print(point_row)
             x_vals, y_vals = point_row
             graphs.append(create_line_graph(self, x_vals, y_vals))
 
