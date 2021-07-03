@@ -1,0 +1,46 @@
+\documentclass[preview]{standalone}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{setspace}
+\usepackage{tipa}
+\usepackage{relsize}
+\usepackage{textcomp}
+\usepackage{mathrsfs}
+\usepackage{calligra}
+\usepackage{wasysym}
+\usepackage{ragged2e}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{microtype}
+\DisableLigatures{encoding = *, family = * }
+\linespread{1}
+
+\begin{document}
+
+\begin{center}
+Is a notational system for specifying a series of notes to be played simultaneously, written as:
+              \[
+                  \overline{r} \mid x_{1} , x_{2} , \dotsc  , x_{n - 1} , x_{n}
+              \]
+              \begin{itemize}
+                \item Where $ \overline{r} \in \mathbb{W}$ is the root tone 
+                \item  $ x_{1} , x_{2} , \dotsc  , x_{n - 1} , x_{n}$ are a series of intervals that generate the notes
+                  \[
+                  \overline{r  +  x_{1}}, \overline{r  +  x_{2}}, \ldots, \overline{r  +  x_{n}}, 
+                  \]
+                  These notes form the chord.
+              \end{itemize}
+              \subsubsection*{Examples}
+              \begin{itemize}
+                \item $ \overline{0} \mid 0, 4, 7, 11$ generates the notes $ \overline{0}, \overline{4}, \overline{7}, \overline{11} \leftrightarrow C, E, G, B$ which is a C major 7th chord.
+                \item $ \overline{5} \mid 0, 3, 7$ generates the notes $ \overline{5}, \overline{8}, \overline{0} \leftrightarrow F, Ab, C$ which is a F minor triad
+              \end{itemize}
+\end{center}
+
+\end{document}
