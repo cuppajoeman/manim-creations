@@ -2,6 +2,7 @@ from manim import *
 from numuse import  converters
 import numuse.music
 from fractions import Fraction
+import math
 
 def create_line_graph(self, x_vals, y_vals):
     x_padding = 1
@@ -9,7 +10,7 @@ def create_line_graph(self, x_vals, y_vals):
     #print((min(y_vals)-1, max(y_vals)+1))
     print(self.camera.frame_width - 2 * x_padding)
     plane = NumberPlane(
-        x_range = (0, max(x_vals)),
+        x_range = (math.floor(min(x_vals)), math.ceil(max(x_vals))),
         y_range = (min(y_vals)-1, max(y_vals)+1),
         #x_length = self.camera.frame_width - 2 * x_padding,
         x_length = 12,
