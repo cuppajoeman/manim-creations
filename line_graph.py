@@ -82,7 +82,7 @@ class LineGraphExample(Scene):
         measure_count = 0
         for measure in m.measures:
             # TODO remove hardcoded 4
-            if measure_count % 4 == 0 and measure_count != 0:
+            if measure_count % 4-1 == 0 and measure_count != 0:
                 x_vals, y_vals = convert_points_to_x_y_list(point_row)
                 points.append((x_vals, y_vals))
                 point_row = []
@@ -94,9 +94,13 @@ class LineGraphExample(Scene):
             measure_count += 1
         #print([float(x) for x in x_vals], [float(y) for y in y_vals])
 
+        # adds in the last one
+        #points.append(tuple(convert_points_to_x_y_list(point_row)))
 
-        if measure_count <= 4:
-            points.append(tuple(convert_points_to_x_y_list(point_row)))
+
+        ## If the input was less than one measure
+        #if measure_count <= 4:
+        #    points.append(tuple(convert_points_to_x_y_list(point_row)))
 
         graphs = []
         start_idx = 0
