@@ -12,6 +12,7 @@ def create_line_graph(self, x_vals, y_vals):
         y_range = (min(y_vals)-1, max(y_vals)+1),
         x_length = self.camera.frame_width - 2 * x_padding,
         #y_length = self.camera.frame_height - 2 * y_padding,
+        y_length = 3,
         axis_config={"include_numbers": True},
     )
     plane.center()
