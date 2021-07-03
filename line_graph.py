@@ -81,6 +81,7 @@ class LineGraphExample(Scene):
         measure_count = 0
         for measure in m.measures:
             # TODO remove hardcoded 4
+            print(measure_count)
             if measure_count % 4 == 0 and measure_count != 0:
                 print(point_row)
                 x_vals, y_vals = zip(*point_row)
