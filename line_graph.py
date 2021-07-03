@@ -77,6 +77,9 @@ class LineGraphExample(Scene):
         measures = converters.parse_music_measures(jens_solo_arps)
         m = numuse.music.Music(measures, 120)
 
+        def convert_points_to_x_y_list(points):
+            return zip(*points)
+
         point_row = []
         measure_count = 0
         for measure in m.measures:
@@ -84,8 +87,7 @@ class LineGraphExample(Scene):
             print(measure_count)
             if measure_count % 4 == 0 and measure_count != 0:
                 print("got in")
-                x_vals, y_vals = zip(*point_row)
-                print(x_vals, y_vals)
+                x_vals, y_vals = convert_points_to_x_y_list(point_row)
                 points.append((x_vals, y_vals))
                 point_row = []
 
@@ -95,6 +97,9 @@ class LineGraphExample(Scene):
                        point_row.append((moment.time, list(moment.notes.notes)[0].note))
             measure_count += 1
         #print([float(x) for x in x_vals], [float(y) for y in y_vals])
+
+        if measure_count < 4:
+            points.append(tuple(convert_points_to_x_y_list(point_row)))
 
         graphs = []
         for point_row in points:
