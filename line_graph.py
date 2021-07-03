@@ -94,6 +94,7 @@ class LineGraphExample(Scene):
 
         graphs = []
         for point_row in points:
+            print(point_row)
             x_vals, y_vals = point_row
             graphs.append(create_line_graph(self, x_vals, y_vals))
 
