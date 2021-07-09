@@ -146,10 +146,10 @@ class TableAnimation(Scene):
                 prev_table = curr_table
                 i += 1
 
-        t_ctx = TableContext(all_diatonics)
+        t_ctx = TableContext(one_six_two_five)
 
         # draw_table_series(construct_table_series_RIC_addition_key_intervals(blues_base), "12-bar Blues")
         draw_table_series(
             construct_table_series_RIC_addition_key_intervals(t_ctx),
-            r"All Diatonic Chords",
+            r"1 6 2 5",
         )
