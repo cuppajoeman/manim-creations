@@ -150,5 +150,5 @@ class TableAnimation(Scene):
         # draw_table_series(construct_table_series_RIC_addition_key_intervals(blues_base), "12-bar Blues")
         draw_table_series(
             construct_table_series_RIC_addition_key_intervals(t_ctx),
-            r"Satin Doll",
+            r"Satin Doll, $\mathcal{K} = \overline{0}$",
         )
