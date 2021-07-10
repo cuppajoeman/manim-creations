@@ -88,8 +88,7 @@ class TableAnimation(Scene):
                 # if double entry is true, then content is an array of length 2
 
         def is_RIC_notation(txt):
-            # c'mon you can do better than this lamo
-            return txt[0].isnumeric()
+            return "|" in txt
 
         def construct_table_series_RIC_addition_key_intervals(
             t_ctx, funcs=[RIC_to_latex, RIC_to_addition_step, RIC_to_key_intervals]
@@ -146,10 +145,10 @@ class TableAnimation(Scene):
                 prev_table = curr_table
                 i += 1
 
-        t_ctx = TableContext(one_six_two_five)
+        t_ctx = TableContext(satin_doll)
 
         # draw_table_series(construct_table_series_RIC_addition_key_intervals(blues_base), "12-bar Blues")
         draw_table_series(
             construct_table_series_RIC_addition_key_intervals(t_ctx),
-            r"1 6 2 5",
+            r"Satin Doll",
         )
