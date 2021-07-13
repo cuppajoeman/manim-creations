@@ -69,6 +69,13 @@ one_six_two_five = [
     ["0 | 0 4 7 11", "9 | 0 3 7 10", "2 | 0 3 7 10", "7 | 0 4 7 10"]
 ]
 
+the_chicken = [
+    ["10 | 0 4 7 10", repeat_symbol, repeat_symbol, repeat_symbol], 
+    ["10 | 0 4 7 10", repeat_symbol, repeat_symbol, repeat_symbol], 
+    ["3 | 0 4 7 10", repeat_symbol, "2 | 0 4 7 10", "7 | 0 4 7 10"], 
+    ["0 | 0 4 7 10", repeat_symbol, repeat_symbol, "break"], 
+]
+
 all_diatonics = [
     [r"\text{Major}", r"\text{Minor}", r"\text{Harmonic}", r"\text{Melodic}"],
     ["0 | 0 4 7 11", "0 | 0 3 7 10", "0 | 0 3 7 11", "0 | 0 3 7 11"],
