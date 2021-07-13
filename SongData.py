@@ -76,6 +76,12 @@ the_chicken = [
     ["0 | 0 4 7 10", repeat_symbol, repeat_symbol, "break"], 
 ]
 
+basic_blues = [
+    ["0 | 0 4 7 10", repeat_symbol, repeat_symbol, repeat_symbol],
+    ["5 | 0 4 7 10", repeat_symbol, "0 | 0 4 7 10", repeat_symbol],
+    ["7 | 0 4 7 10", repeat_symbol, "0 | 0 4 7 10", repeat_symbol],
+]
+
 all_diatonics = [
     [r"\text{Major}", r"\text{Minor}", r"\text{Harmonic}", r"\text{Melodic}"],
     ["0 | 0 4 7 11", "0 | 0 3 7 10", "0 | 0 3 7 11", "0 | 0 3 7 11"],
