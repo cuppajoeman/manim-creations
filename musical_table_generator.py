@@ -145,10 +145,10 @@ class TableAnimation(Scene):
                 prev_table = curr_table
                 i += 1
 
-        t_ctx = TableContext(basic_blues)
+        t_ctx = TableContext(jazz_blues)
 
         # draw_table_series(construct_table_series_RIC_addition_key_intervals(blues_base), "12-bar Blues")
         draw_table_series(
             construct_table_series_RIC_addition_key_intervals(t_ctx),
-            r"Basic Blues",
+            r"Jazz Blues | $\mathcal{K} = \overline{0}$",
         )
