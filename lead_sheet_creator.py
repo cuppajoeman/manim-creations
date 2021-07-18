@@ -17,7 +17,7 @@ class TableAnimation(Scene):
 
         repeat_symbol = generate_repeat_symbol_with_spaces()
 
-        scale = 6
+        scale = 14
 
         class TableContext:
             def __init__(self, table, width=scale * 1, height=scale * math.sqrt(2)):
@@ -26,7 +26,7 @@ class TableAnimation(Scene):
                 self.num_rows = len(table)
                 self.num_cols = len(table[0])
 
-                self.x_padding = 0.5
+                self.x_padding = 0.2
                 self.y_padding = 0.2
 
                 self.cell_width = width / self.num_cols
