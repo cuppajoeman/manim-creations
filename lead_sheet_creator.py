@@ -136,7 +136,7 @@ class TableAnimation(Scene):
 
 
         def draw_table(table, title, font_color=BLACK):
-            self.play(Write(Tex(title, color=font_color).next_to(table, UP)))
+            self.add(Tex(title, color=font_color).next_to(table, UP))
             self.add(table)
 
         t_ctx = TableContext(it_could_happen_to_you)
