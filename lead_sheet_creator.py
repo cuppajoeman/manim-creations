@@ -148,6 +148,6 @@ class TableAnimation(Scene):
         chord_table, key_interval_table = tables[0], tables[1]
 
 
-        draw_table(chord_table, "It Could Happen To You", BLACK)
+        draw_table(key_interval_table, "It Could Happen To You", BLACK)
 
 
