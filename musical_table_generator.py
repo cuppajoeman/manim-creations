@@ -145,10 +145,10 @@ class TableAnimation(Scene):
                 prev_table = curr_table
                 i += 1
 
-        t_ctx = TableContext(bird_blues)
+        t_ctx = TableContext(it_could_happen_to_you)
 
         # draw_table_series(construct_table_series_RIC_addition_key_intervals(blues_base), "12-bar Blues")
         draw_table_series(
             construct_table_series_RIC_addition_key_intervals(t_ctx),
-            r"Bird Blues",
+            r"It Could Happen To You",
         )
