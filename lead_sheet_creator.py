@@ -10,7 +10,7 @@ class TableAnimation(Scene):
 
         # TABLE CONSTRUCTION
 
-        self.camera.background_color = "#475147"
+        self.camera.background_color = WHITE
 
         def generate_repeat_symbol_with_spaces():
             return r"\%"
@@ -47,7 +47,7 @@ class TableAnimation(Scene):
             if cell.get_tex_string() == repeat_symbol:
                 cell.scale(1 / 2)
 
-        def create_table(t_ctx, tex_table_data):
+        def create_table(t_ctx, tex_table_data, table_color=WHITE):
             table = VGroup()
             for row in tex_table_data:
                 for table_entry in row:
@@ -55,10 +55,10 @@ class TableAnimation(Scene):
                         first = table_entry.first_content
                         second = table_entry.second_content
                         rect_f = Rectangle(
-                            width=t_ctx.cell_width / 2, height=t_ctx.cell_height
+                            width=t_ctx.cell_width / 2, height=t_ctx.cell_height, color=table_color
                         )
                         rect_s = Rectangle(
-                            width=t_ctx.cell_width / 2, height=t_ctx.cell_height
+                            width=t_ctx.cell_width / 2, height=t_ctx.cell_height, color=table_color
                         )
                         apply_cell_sizing(t_ctx, first, half_size=True)
                         apply_cell_sizing(t_ctx, second, half_size=True)
@@ -68,7 +68,7 @@ class TableAnimation(Scene):
                     else:
                         content = table_entry.content
                         rect = Rectangle(
-                            width=t_ctx.cell_width, height=t_ctx.cell_height
+                            width=t_ctx.cell_width, height=t_ctx.cell_height, color=table_color
                         )
                         apply_cell_sizing(t_ctx, content)
                         rect.add(content)
@@ -96,7 +96,7 @@ class TableAnimation(Scene):
             return "|" in txt
 
         def construct_table_series_RIC_addition_key_intervals(
-            t_ctx, funcs=[RIC_to_latex, RIC_to_addition_step, RIC_to_key_intervals]
+            t_ctx, funcs=[RIC_to_latex, RIC_to_addition_step, RIC_to_key_intervals], table_color=WHITE
         ):
             table_series = []
             # RIC (base repr in latex)
@@ -131,23 +131,23 @@ class TableAnimation(Scene):
                             table_row.append(TableEntry(fun_step(entry)))
 
                     step_table.append(table_row)
-                table_series.append(create_table(t_ctx, step_table))
+                table_series.append(create_table(t_ctx, step_table, table_color))
             return table_series
 
 
-        def draw_table(table, title, font_color=BLACK):
+        def draw_table(table, title, font_color=WHITE):
             self.add(Tex(title, color=font_color).next_to(table, UP))
             self.add(table)
 
         t_ctx = TableContext(it_could_happen_to_you)
 
-        tables = construct_table_series_RIC_addition_key_intervals(t_ctx)
+        tables = construct_table_series_RIC_addition_key_intervals(t_ctx, table_color=BLACK)
 
         print(tables)
 
         chord_table, key_interval_table = tables[0], tables[1]
 
 
-        draw_table(chord_table, "It Could Happen To You", WHITE)
+        draw_table(chord_table, "It Could Happen To You", BLACK)
 
 
