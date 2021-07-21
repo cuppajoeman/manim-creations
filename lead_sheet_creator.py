@@ -53,11 +53,12 @@ class TableAnimation(Scene):
                 for table_entry in row:
                     if table_entry.multi_entry:
                         rects = []
+                        n = len(table_entry.entries)
                         for entry_content in table_entry.entries:
                             rect_f = Rectangle(
-                                width=t_ctx.cell_width / 2, height=t_ctx.cell_height, color=table_color
+                                width=t_ctx.cell_width / n, height=t_ctx.cell_height, color=table_color
                             )
-                            apply_cell_sizing(t_ctx, entry_content, len(table_entry.entries))
+                            apply_cell_sizing(t_ctx, entry_content, n)
                             rect_f.add(entry_content)
                             rects.append(rect_f)
                         rect = VGroup(*rects).arrange(buff=0)
