@@ -51,20 +51,16 @@ class TableAnimation(Scene):
             table = VGroup()
             for row in tex_table_data:
                 for table_entry in row:
-                    if table_entry.double_entry:
-                        first = table_entry.first_content
-                        second = table_entry.second_content
-                        rect_f = Rectangle(
-                            width=t_ctx.cell_width / 2, height=t_ctx.cell_height, color=table_color
-                        )
-                        rect_s = Rectangle(
-                            width=t_ctx.cell_width / 2, height=t_ctx.cell_height, color=table_color
-                        )
-                        apply_cell_sizing(t_ctx, first, half_size=True)
-                        apply_cell_sizing(t_ctx, second, half_size=True)
-                        rect_f.add(first)
-                        rect_s.add(second)
-                        rect = VGroup(rect_f, rect_s).arrange(buff=0)
+                    if table_entry.multi_entry:
+                        rects = []
+                        for entry_content in table_entry.entries:
+                            rect_f = Rectangle(
+                                width=t_ctx.cell_width / 2, height=t_ctx.cell_height, color=table_color
+                            )
+                            apply_cell_sizing(t_ctx, entry_content, half_size=True)
+                            rect_f.add(entry_content)
+                            rects.append(rect_f)
+                        rect = VGroup(*rects).arrange(buff=0)
                     else:
                         content = table_entry.content
                         rect = Rectangle(
@@ -82,12 +78,13 @@ class TableAnimation(Scene):
         # drawing of tables
 
         class TableEntry:
-            def __init__(self, content, double_entry=False, font_color=BLACK):
-                self.double_entry = double_entry
+            def __init__(self, content, multi_entry=False, font_color=BLACK):
+                self.multi_entry = multi_entry
                 self.raw_content = content
-                if self.double_entry:
-                    self.first_content = MathTex(content[0], color=font_color)
-                    self.second_content = MathTex(content[1], color=font_color)
+                self.entries = []
+                if self.multi_entry:
+                    for text in content:
+                        self.entries.append(MathTex(text, color=font_color))
                 else:
                     self.content = MathTex(content, color=font_color)
                 # if double entry is true, then content is an array of length 2
@@ -106,22 +103,18 @@ class TableAnimation(Scene):
                     table_row = []
                     for entry in row:
                         if type(entry) == list:
-                            first_entry = entry[0]
-                            second_entry = entry[1]
-                            # assuming both are RIC's
-                            if not is_RIC_notation(first_entry):
-                                first_processed = first_entry
-                            else:
-                                first_processed = fun_step(first_entry)
-                            if not is_RIC_notation(second_entry):
-                                second_processed = second_entry
-                            else:
-                                second_processed = fun_step(second_entry)
-
+                            processed_entries = []
+                            for sub_entry in entry:
+                                if not is_RIC_notation(sub_entry):
+                                    processed = sub_entry
+                                else:
+                                    processed = fun_step(sub_entry)
+                                processed_entries.append(processed)
+            
                             table_row.append(
                                 TableEntry(
-                                    [first_processed, second_processed],
-                                    double_entry=True,
+                                    processed_entries,
+                                    multi_entry=True,
                                 )
                             )
                         elif not is_RIC_notation(entry):
