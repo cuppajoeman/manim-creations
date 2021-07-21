@@ -37,10 +37,10 @@ class TableAnimation(Scene):
                 self.content_width = width / self.num_cols - 2 * self.x_padding
                 self.content_height = height / self.num_rows - 2 * self.y_padding
 
-        def apply_cell_sizing(t_ctx, cell, half_size=False):
+        def apply_cell_sizing(t_ctx, cell, num_entries=1):
 
             if cell.width > cell.height:
-                cell.scale_to_fit_width(t_ctx.content_width / (2 if half_size else 1))
+                cell.scale_to_fit_width(t_ctx.content_width / num_entries)
             elif cell.height >= cell.width:
                 cell.scale_to_fit_height(t_ctx.content_height)
 
@@ -57,7 +57,7 @@ class TableAnimation(Scene):
                             rect_f = Rectangle(
                                 width=t_ctx.cell_width / 2, height=t_ctx.cell_height, color=table_color
                             )
-                            apply_cell_sizing(t_ctx, entry_content, half_size=True)
+                            apply_cell_sizing(t_ctx, entry_content, len(table_entry.entries))
                             rect_f.add(entry_content)
                             rects.append(rect_f)
                         rect = VGroup(*rects).arrange(buff=0)
