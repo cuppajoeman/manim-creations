@@ -132,7 +132,7 @@ class TableAnimation(Scene):
             self.add(Tex(title, color=font_color).next_to(table, UP))
             self.add(table)
 
-        t_ctx = TableContext(it_could_happen_to_you)
+        t_ctx = TableContext(lullaby_of_bird_land)
 
         tables = construct_table_series_RIC_addition_key_intervals(t_ctx, table_color=BLACK)
 
@@ -141,6 +141,6 @@ class TableAnimation(Scene):
         chord_table, key_interval_table = tables[0], tables[2]
 
 
-        draw_table(key_interval_table, "It Could Happen To You", BLACK)
+        draw_table(key_interval_table, "Lullaby Of Birdland", BLACK)
 
 
