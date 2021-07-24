@@ -45,7 +45,8 @@ class TableAnimation(Scene):
                 cell.scale_to_fit_height(t_ctx.content_height)
 
             if cell.get_tex_string() == repeat_symbol:
-                cell.scale(1 / 2)
+                pass
+                #cell.scale(1 / 2)
 
         def create_table(t_ctx, tex_table_data, table_color=WHITE):
             table = VGroup()
