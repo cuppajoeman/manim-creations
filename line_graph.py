@@ -24,7 +24,7 @@ def create_line_graph(x_values, y_values, x_start, x_end, width, height ):
         x_values = x_values,
         y_values = y_values,
         line_color=GOLD_E,
-        vertex_dot_style=dict(stroke_width=10,  fill_color=PURPLE),
+        vertex_dot_style=dict(stroke_width=3,  fill_color=PURPLE),
         stroke_width = 5,
     )
     labels = VGroup()
@@ -72,8 +72,7 @@ def create_line_graph(x_values, y_values, x_start, x_end, width, height ):
         annotate_offset.append(0)
         label = Tex(str(y_values[i] % 12), color=BLACK).scale(.5)
         print(annotate_offset)
-        #labels.add(label.next_to(line_graph["vertex_dots"][i], np.array(annotate_offset)))
-        labels.add(label.move_to(line_graph["vertex_dots"][i]))
+        labels.add(label.next_to(line_graph["vertex_dots"][i], np.array(annotate_offset)))
 
 
     return VGroup(plane, line_graph, labels)
