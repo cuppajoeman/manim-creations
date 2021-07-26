@@ -116,7 +116,7 @@ class LineGraphExample(Scene):
         for point_row in points:
             row_length = 4 * 4
             x_vals, y_vals = point_row
-            graphs.append(create_line_graph(x_vals, y_vals, start_idx, start_idx + row_length, width, graph_height))
+            graphs.append(create_line_graph(x_vals, y_vals, start_idx, start_idx + row_length, width, graph_height * 2))
             start_idx += row_length
 
         all_graphs = VGroup(*graphs)
