@@ -60,13 +60,13 @@ def create_line_graph(x_values, y_values, x_start, x_end, width, height ):
                 if y_prev >= y_pos:
                     annotate_offset = [0, offset_scale]
                 else:
-                    annotate_offset = [0, offset_scale]
+                    annotate_offset = [0, -offset_scale]
             elif y_pos <= y_prev:
-                # v formation put text under
-                annotate_offset = [0, 3 * offset_scale]
-            elif y_pos >= y_prev:
-                # mountain top
+                # v formation put text in v
                 annotate_offset = [0, offset_scale]
+            elif y_pos >= y_prev:
+                # mountain top put text under peak
+                annotate_offset = [0, -offset_scale]
 
         # add z componenent
         annotate_offset.append(0)
