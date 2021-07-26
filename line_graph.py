@@ -81,7 +81,9 @@ class LineGraphExample(Scene):
         all_graphs = VGroup()
         points = []
         measures = converters.parse_music_measures(jens_solo_arps)
-        graph_height = height/len(measures)
+        num_lines = len(measures) // 4
+        graph_height = height / num_lines
+        print(height, graph_height, len(measures))
         m = numuse.music.Music(measures, 120)
 
         def convert_points_to_x_y_list(points):
@@ -116,7 +118,7 @@ class LineGraphExample(Scene):
         for point_row in points:
             row_length = 4 * 4
             x_vals, y_vals = point_row
-            graphs.append(create_line_graph(x_vals, y_vals, start_idx, start_idx + row_length, width, graph_height * 2))
+            graphs.append(create_line_graph(x_vals, y_vals, start_idx, start_idx + row_length, width, graph_height))
             start_idx += row_length
 
         all_graphs = VGroup(*graphs)
