@@ -71,6 +71,7 @@ def create_line_graph(x_values, y_values, x_start, x_end, width, height ):
         # add z componenent
         annotate_offset.append(0)
         label = Tex(str(y_values[i] % 12)).scale(.5)
+        print(annotate_offset)
         labels.add(label.next_to(line_graph["vertex_dots"][i], np.array(annotate_offset)))
 
 
