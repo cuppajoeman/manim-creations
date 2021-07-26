@@ -179,8 +179,10 @@ class LineGraphExample(Scene):
         all_graphs = VGroup(*graphs)
         #all_graphs.arrange(DOWN, buff=0.5)
         all_graphs.arrange(DOWN,buff=0)
+
         #print(all_graphs.height)
         #config.frame_height = all_graphs.height 
         #config.frame_size = (1080, all_graphs.height * Pixels)
         self.add(all_graphs)
+        self.add(Tex("Take the A Train Arp. Solo", color=BLACK).next_to(all_graphs, UP))
 
