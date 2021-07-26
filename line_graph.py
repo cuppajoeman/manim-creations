@@ -24,7 +24,8 @@ def create_line_graph(x_values, y_values, x_start, x_end, width, height ):
         x_values = x_values,
         y_values = y_values,
         line_color=GOLD_E,
-        vertex_dot_style=dict(stroke_width=5,  fill_color=PURPLE),
+        vertex_dot_style=dict(stroke_width=3,  fill_color=PURPLE),
+        vertex_dot_radius=5,
         stroke_width = 5,
     )
     labels = VGroup()
