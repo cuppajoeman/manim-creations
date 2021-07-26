@@ -7,11 +7,11 @@ import math
 
 SCALE = 12
 
-def create_line_graph(x_vals, y_vals, x_start, x_end, width, height ):
+def create_line_graph(x_values, y_values, x_start, x_end, width, height ):
     plane = NumberPlane(
-        #x_range = (math.floor(min(x_vals)), math.ceil(max(x_vals))),
+        #x_range = (math.floor(min(x_values)), math.ceil(max(x_values))),
         x_range = (x_start, x_end),
-        y_range = (min(y_vals)-1, max(y_vals)+1),
+        y_range = (min(y_values)-1, max(y_values)+1),
         #x_length = self.camera.frame_width - 2 * x_padding,
         x_length = width,
         #y_length = self.camera.frame_height - 2 * y_padding,
@@ -20,13 +20,17 @@ def create_line_graph(x_vals, y_vals, x_start, x_end, width, height ):
     )
     plane.center()
     line_graph = plane.get_line_graph(
-        x_values = x_vals,
-        y_values = y_vals,
+        x_values = x_values,
+        y_values = y_values,
         line_color=GOLD_E,
         vertex_dot_style=dict(stroke_width=3,  fill_color=PURPLE),
         stroke_width = 5,
     )
-    return VGroup(plane, line_graph)
+    labels = VGroup()
+    for i, y_value in enumerate(y_values):
+        labels.add(Tex(str(y_value % 12)).next_to(line_graph["vertex_dots"][i], UP))
+
+    return VGroup(plane, line_graph, labels)
 
 class LineGraphExample(Scene):
     def construct(self):
