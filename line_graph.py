@@ -28,10 +28,55 @@ def create_line_graph(x_values, y_values, x_start, x_end, width, height ):
         stroke_width = 5,
     )
     labels = VGroup()
-    for i, y_value in enumerate(y_values):
-        labels.add(Tex(str(y_value % 12)).next_to(line_graph["vertex_dots"][i], UP))
+
+
+    offset_scale = 0.5
+    for i in range(len(x_values)):
+        x_pos = x_values[i]
+        y_pos = y_values[i]
+        # assuming plot of more than 2 notes
+        assert len(x_values) >= 2
+        if i == 0:
+            #about to figure out the direction of it 
+            y_next = y_values[i+1]
+            if y_next > y_pos:
+                # put text 
+                annotate_offset = [0, -offset_scale]
+            else:
+                annotate_offset = [0, offset_scale]
+        elif i == len(x_values)-1:
+            y_prev = y_values[i-1]
+            if y_prev > y_pos:
+                # put text 
+                annotate_offset = [0, -offset_scale]
+            else:
+                annotate_offset = [0, offset_scale]
+        else:
+            y_prev = y_values[i-1]
+            y_next = y_values[i+1]
+            between = y_prev <= y_pos <= y_next or y_prev >= y_pos >= y_next
+            if between:
+                # downhill
+                if y_prev >= y_pos:
+                    annotate_offset = [0, offset_scale]
+                else:
+                    annotate_offset = [0, offset_scale]
+            elif y_pos <= y_prev:
+                # v formation put text under
+                annotate_offset = [0, 3 * offset_scale]
+            elif y_pos >= y_prev:
+                # mountain top
+                annotate_offset = [0, offset_scale]
+
+        # add z componenent
+        annotate_offset.append(0)
+        print(annotate_offset, RIGHT)
+        labels.add(Tex(str(y_values[i] % 12)).next_to(line_graph["vertex_dots"][i], np.array(annotate_offset)))
+
 
     return VGroup(plane, line_graph, labels)
+
+
 
 class LineGraphExample(Scene):
     def construct(self):
