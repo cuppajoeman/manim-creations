@@ -4,15 +4,18 @@ import numuse.music
 from fractions import Fraction
 import math
 
-def create_line_graph(x_vals, y_vals, x_start, x_end):
+
+SCALE = 12
+
+def create_line_graph(x_vals, y_vals, x_start, x_end, width, height ):
     plane = NumberPlane(
         #x_range = (math.floor(min(x_vals)), math.ceil(max(x_vals))),
         x_range = (x_start, x_end),
         y_range = (min(y_vals)-1, max(y_vals)+1),
         #x_length = self.camera.frame_width - 2 * x_padding,
-        x_length = 12,
+        x_length = width,
         #y_length = self.camera.frame_height - 2 * y_padding,
-        y_length = 6,
+        y_length = height,
         axis_config={"include_numbers": True},
     )
     plane.center()
@@ -27,6 +30,11 @@ def create_line_graph(x_vals, y_vals, x_start, x_end):
 
 class LineGraphExample(Scene):
     def construct(self):
+        
+        width=SCALE* 1
+        height=SCALE * math.sqrt(2)
+
+
         b = 1
         # half
         h = 1 / 2
@@ -73,6 +81,7 @@ class LineGraphExample(Scene):
         all_graphs = VGroup()
         points = []
         measures = converters.parse_music_measures(jens_solo_arps)
+        graph_height = height/len(measures)
         m = numuse.music.Music(measures, 120)
 
         def convert_points_to_x_y_list(points):
@@ -107,7 +116,7 @@ class LineGraphExample(Scene):
         for point_row in points:
             row_length = 4 * 4
             x_vals, y_vals = point_row
-            graphs.append(create_line_graph(x_vals, y_vals, start_idx, start_idx + row_length))
+            graphs.append(create_line_graph(x_vals, y_vals, start_idx, start_idx + row_length, width, graph_height))
             start_idx += row_length
 
         all_graphs = VGroup(*graphs)
