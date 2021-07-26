@@ -133,7 +133,7 @@ class TableAnimation(Scene):
             self.add(Tex(title, color=font_color).next_to(table, UP))
             self.add(table)
 
-        t_ctx = TableContext(st_thomas)
+        t_ctx = TableContext(there_will_never_be_another_you)
 
         tables = construct_table_series_RIC_addition_key_intervals(t_ctx, table_color=BLACK)
 
@@ -142,6 +142,6 @@ class TableAnimation(Scene):
         chord_table, key_interval_table = tables[0], tables[2]
 
 
-        draw_table(key_interval_table, "St. Thomas", BLACK)
+        draw_table(key_interval_table, "There Will Never Be Another You", BLACK)
 
 
