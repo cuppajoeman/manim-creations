@@ -73,7 +73,8 @@ def create_line_graph(x_values, y_values, x_start, x_end, width, height ):
         annotate_offset.append(0)
         label = Tex(str(y_values[i] % 12), color=WHITE).scale(.5)
         print(annotate_offset)
-        labels.add(label.next_to(line_graph["vertex_dots"][i], np.array(annotate_offset)))
+        #labels.add(label.next_to(line_graph["vertex_dots"][i], np.array(annotate_offset)))
+        labels.add(label.move_to(line_graph["vertex_dots"][i]))
 
 
     return VGroup(plane, line_graph, labels)
