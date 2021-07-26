@@ -41,16 +41,16 @@ def create_line_graph(x_values, y_values, x_start, x_end, width, height ):
             y_next = y_values[i+1]
             if y_next > y_pos:
                 # put text 
-                annotate_offset = [0, -offset_scale]
-            else:
                 annotate_offset = [0, offset_scale]
+            else:
+                annotate_offset = [0, -offset_scale]
         elif i == len(x_values)-1:
             y_prev = y_values[i-1]
             if y_prev > y_pos:
                 # put text 
-                annotate_offset = [0, -offset_scale]
-            else:
                 annotate_offset = [0, offset_scale]
+            else:
+                annotate_offset = [0, -offset_scale]
         else:
             y_prev = y_values[i-1]
             y_next = y_values[i+1]
