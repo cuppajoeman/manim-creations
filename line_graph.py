@@ -143,5 +143,5 @@ class LineGraphExample(Scene):
         #config.frame_height = all_graphs.height 
         #config.frame_size = (1080, all_graphs.height * Pixels)
         self.add(all_graphs)
-        self.add(Tex("Take the A Train Arp. Solo", color=BLACK).next_to(all_graphs, UP))
+        self.add(Tex("Take the A Train", color=BLACK).next_to(all_graphs, UP))
 
