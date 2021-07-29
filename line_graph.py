@@ -95,7 +95,7 @@ class LineGraphExample(Scene):
 
         all_graphs = VGroup()
         points = []
-        measures = converters.parse_music_measures(graph_music_data.take_the_a_train)
+        measures = converters.parse_music_measures(graph_music_data.honey_suckle_rose)
         num_lines = len(measures) // 4
         graph_height = height / num_lines
         m = numuse.music.Music(measures, 120)
@@ -143,5 +143,5 @@ class LineGraphExample(Scene):
         #config.frame_height = all_graphs.height 
         #config.frame_size = (1080, all_graphs.height * Pixels)
         self.add(all_graphs)
-        self.add(Tex("Take the A Train", color=BLACK).next_to(all_graphs, UP))
+        self.add(Tex("Honeysuckle Rose", color=BLACK).next_to(all_graphs, UP))
 
